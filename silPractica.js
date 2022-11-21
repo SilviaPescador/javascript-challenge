@@ -85,7 +85,7 @@ const availableGenders = ['male', 'female'];
 
 
 
-//  Requisitos indispensables
+/* REQUISITOS INDISPENSABLES */
 
 // 1- Mostrar en formato de tabla todos los alumnos. 
 console.table(students)
@@ -94,7 +94,7 @@ console.table(students)
 console.log(students.length);
 
 // 3- Mostrar por consola todos los nombres de los alumnos.
-const namesList = students.map(student => student.name);
+let namesList = students.map(student => student.name);
 namesList.forEach(name => console.log(name));
 
 // 4- Eliminar el último alumno de la clase.
@@ -106,23 +106,23 @@ students.splice(calculateRandomNumber(0, students.length), 1)
 console.log('Students after splice: ', students)
 // 6- Mostrar por consola todos los datos de los alumnos que son chicas.
 
-const femalesList =  students.filter(student => student.gender ==='female');
+let femalesList =  students.filter(student => student.gender ==='female');
 console.log('Females List: ', femalesList);
 
 // 7- Mostrar por consola el número de chicos y chicas que hay en la clase.
-const malesList = students.filter(student => student.gender === 'male');
+let malesList = students.filter(student => student.gender === 'male');
 
 console.log('Number of females: ', femalesList.length);
 console.log ('Number of males: ', malesList.length);
 
 // 8- Mostrar true o false por consola si todos los alumnos de la clase son chicas.
-const allFemales = students.every(student => student.gender === 'female');
+let allFemales = students.every(student => student.gender === 'female');
 console.log('Students are all females?: ',allFemales);
 
 // 9- Mostrar por consola los nombres de los alumnos que tengan entre 20 y 25 años.
-const youngList = students.filter(student => student.age >= 20 && student.age <= 25 );
+let youngList = students.filter(student => student.age >= 20 && student.age <= 25 );
 
-const youngListNames = youngList.map(student => student.name)
+let youngListNames = youngList.map(student => student.name)
 console.log('Students between 20-25: ',youngListNames);
 
 // 10- Añadir un alumno nuevo con los siguientes datos:
@@ -151,16 +151,16 @@ students.push({ age: randomAge, examScores: [], gender: randomGender, name: rand
 
 console.log('Students después del new random student: ',students);
 
-// 11- Mostrar por consola el nombre de la persona más joven de la clase.
-// ¡OJO!, si varias personas de la clase comparten la edad más baja, cualquiera de ellos es una respuesta válida.
+/* 11- Mostrar por consola el nombre de la persona más joven de la clase.
+¡OJO!, si varias personas de la clase comparten la edad más baja, cualquiera de ellos es una respuesta válida.*/
 
     // 1º Mapeo la lista de students, para obtener otra array con las edades.
 let studentAges = students.map(student => student.age);
 
-    // 2º Cálculo de la edad mínima de la lista de edades.(se obtine un valor, no un array). Se ha de hacer  sobre la copia de studentAges para no modificarla(con spread operator)
+    // 2º Cálculo de la edad mínima de la lista de edades.(se obtine un valor, no un array). Se hace sobre la copia de studentAges para no modificarla(con spread operator)
 let minYoungerAge = Math.min(...studentAges);
 
-    // 3º busco en la array students el primer valor que coincida con la mínima edad hallada, en la seleccion de edades.
+    // 3º Búsqueda en la array students el primer valor que coincida con la mínima edad hallada, en la seleccion de edades.
 let youngerStudent = students[studentAges.indexOf(minYoungerAge)];
 
 let youngerName = youngerStudent.name;
@@ -185,9 +185,10 @@ let avgFemalesages = Math.round(sumFemalesAges / femalesList.length);
 console.log('Females ages average: ', avgFemalesages);
 
 // 14- Añadir nueva nota a los alumnos. Por cada alumno de la clase, tendremos que calcular una nota de forma aleatoria(número entre 0 y 10) y añadirla a su listado de notas.
-            /* REVISAR */
-// students.forEach(student => student.examScores = [calculateRandomNumber(0, 10)]);
-students.forEach(student => student.examScores.push(calculateRandomNumber(0, 10)));
+
+// students.forEach(student => student.examScores = [calculateRandomNumber(0, 10)]); ---> incorrecto ya que no suma notas al array. 
+
+students.forEach(student => student.examScores.push(calculateRandomNumber(0, 10))); // correcto
 
 console.log('Students´s new exam Scores: ', students)
 
@@ -207,6 +208,8 @@ students.sort((a, b) => {
 });
 
 console.log('Students sorted alphabetically: ', students)
+
+/* REQUISITOS OPCIONALES */
 
 // 16- Mostrar por consola el alumno de la clase con las mejores notas.
 
