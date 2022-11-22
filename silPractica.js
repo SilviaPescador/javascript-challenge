@@ -94,7 +94,7 @@ console.table(students)
 console.log(students.length);
 
 // 3- Mostrar por consola todos los nombres de los alumnos.
-let namesList = students.map(student => student.name);
+const namesList = students.map(student => student.name);
 namesList.forEach(name => console.log(name));
 
 // 4- Eliminar el último alumno de la clase.
@@ -106,23 +106,23 @@ students.splice(calculateRandomNumber(0, students.length), 1)
 console.log('Students after splice: ', students)
 // 6- Mostrar por consola todos los datos de los alumnos que son chicas.
 
-let femalesList =  students.filter(student => student.gender ==='female');
+const femalesList =  students.filter(student => student.gender ==='female');
 console.log('Females List: ', femalesList);
 
 // 7- Mostrar por consola el número de chicos y chicas que hay en la clase.
-let malesList = students.filter(student => student.gender === 'male');
+const malesList = students.filter(student => student.gender === 'male');
 
 console.log('Number of females: ', femalesList.length);
 console.log ('Number of males: ', malesList.length);
 
 // 8- Mostrar true o false por consola si todos los alumnos de la clase son chicas.
-let allFemales = students.every(student => student.gender === 'female');
+const allFemales = students.every(student => student.gender === 'female');
 console.log('Students are all females?: ',allFemales);
 
 // 9- Mostrar por consola los nombres de los alumnos que tengan entre 20 y 25 años.
-let youngList = students.filter(student => student.age >= 20 && student.age <= 25 );
+const youngList = students.filter(student => student.age >= 20 && student.age <= 25 );
 
-let youngListNames = youngList.map(student => student.name)
+const youngListNames = youngList.map(student => student.name)
 console.log('Students between 20-25: ',youngListNames);
 
 // 10- Añadir un alumno nuevo con los siguientes datos:
@@ -133,10 +133,10 @@ console.log('Students between 20-25: ',youngListNames);
 // ¡OJO!, el nombre y el género tienen que ir acordes.
 
     //1º Género random.
-let randomGender = availableGenders[Math.floor(Math.random()*availableGenders.length)];
+const randomGender = availableGenders[Math.floor(Math.random()*availableGenders.length)];
 
     //2º Nombre random según género; si es female, nombre aleatorio de mujer, si no, de hombre (con valor ternario)
-let randomName = randomGender === 'female'? availableFemaleNames[Math.floor(Math.random()*availableFemaleNames.length)] : availableMaleNames[Math.floor(Math.random()*availableFemaleNames.length)];
+const randomName = randomGender === 'female'? availableFemaleNames[Math.floor(Math.random()*availableFemaleNames.length)] : availableMaleNames[Math.floor(Math.random()*availableFemaleNames.length)];
 
     //3º Edad random.
 function calculateRandomNumber(min, max) {
@@ -155,33 +155,33 @@ console.log('Students después del new random student: ',students);
 ¡OJO!, si varias personas de la clase comparten la edad más baja, cualquiera de ellos es una respuesta válida.*/
 
     // 1º Mapeo la lista de students, para obtener otra array con las edades.
-let studentAges = students.map(student => student.age);
+const studentAges = students.map(student => student.age);
 
     // 2º Cálculo de la edad mínima de la lista de edades.(se obtine un valor, no un array). Se hace sobre la copia de studentAges para no modificarla(con spread operator)
-let minYoungerAge = Math.min(...studentAges);
+const minYoungerAge = Math.min(...studentAges);
 
     // 3º Búsqueda en la array students el primer valor que coincida con la mínima edad hallada, en la seleccion de edades.
-let youngerStudent = students[studentAges.indexOf(minYoungerAge)];
+const youngerStudent = students[studentAges.indexOf(minYoungerAge)];
 
-let youngerName = youngerStudent.name;
+const youngerName = youngerStudent.name;
 
 console.log('Youngest student is: ', youngerName);
 
 // 12- Mostrar por consola la edad media de todos los alumnos de la clase.
     // 1º Creación de una  variable con una nueva array de la suma de todos las edades de los students.
-let sumStudentsAges = studentAges.reduce((sum, n) => sum + n, 0);
+const sumStudentsAges = studentAges.reduce((sum, n) => sum + n, 0);
     // 2º Cálculo de average (media). Valor suma edades, entre el número total de alumnos.
-let avgStudetsAges = Math.round(sumStudentsAges/ students.length);
+const avgStudetsAges = Math.round(sumStudentsAges/ students.length);
 
 console.log('Students ages average: ',avgStudetsAges);
 
 // 13- Mostrar por consola la edad media de las chicas de la clase.
     // 1º Nueva lista con las edades de la lista de females.
-let femalesAges = femalesList.map(female => female.age);
+const femalesAges = femalesList.map(female => female.age);
     // 2º Sumatorio de las edades de las chicas.
-let sumFemalesAges = femalesAges.reduce((sum, n) => sum + n, 0);
+const sumFemalesAges = femalesAges.reduce((sum, n) => sum + n, 0);
     // 3º Cálculo de average (media). Suma edades entre numero total de chicas.
-let avgFemalesages = Math.round(sumFemalesAges / femalesList.length);
+const avgFemalesages = Math.round(sumFemalesAges / femalesList.length);
 console.log('Females ages average: ', avgFemalesages);
 
 // 14- Añadir nueva nota a los alumnos. Por cada alumno de la clase, tendremos que calcular una nota de forma aleatoria(número entre 0 y 10) y añadirla a su listado de notas.
@@ -189,7 +189,7 @@ console.log('Females ages average: ', avgFemalesages);
 // students.forEach(student => student.examScores = [calculateRandomNumber(0, 10)]); ---> incorrecto ya que no suma notas al array. 
 
 students.forEach(student => student.examScores.push(calculateRandomNumber(0, 10))); // correcto
-
+students.forEach(student => student.examScores.push(calculateRandomNumber(0, 10)));
 console.log('Students´s new exam Scores: ', students)
 
 // 15- Ordenar el array de alumnos alfabéticamente según su nombre.
@@ -213,9 +213,46 @@ console.log('Students sorted alphabetically: ', students)
 
 // 16- Mostrar por consola el alumno de la clase con las mejores notas.
 
+    // 1º Nueva lista de listas solo con los examScores.
+const studentsScores = students.map(student => student.examScores)
+console.log('Students Scores', studentsScores)
+
+    // 2º Nueva lista con los sumatorios de notas de cada alumno
+const sumStudentsScores = Array.from(studentsScores, (scores => scores.reduce((sum, n) => sum + n , 0)))
+console.log('Sumatorio Students Scores ', sumStudentsScores)
+
+    // 3º index del alumno con la suma mayor.
+const bestStudentIndex = sumStudentsScores.indexOf(Math.max(...sumStudentsScores));
+console.log('Best student Index is: ',bestStudentIndex)
+
+    // 4º Comparación de su index con el array inicial students y revelo propiedad name.
+const bestStudent = students[bestStudentIndex].name
+console.log('El alumno/a con mejores notas es: ', bestStudent)
 
 // 17- Mostrar por consola la nota media más alta de la clase y el nombre del alumno al que pertenece.
 
+    // 1º Lista con la nota media individual de cada alumno
+let counter = 2 // valor 2 para probar
+const studentsMedias = Array.from(studentsScores, (scores => (scores.reduce((sum, n) => sum + n , 0))/counter))
+console.log('Students Medias',studentsMedias) // 
+
+    // 2º mostrar la nota media más alta y el nombre del alumno que la tiene
+const highMedia = Math.max(...studentsMedias)
+const highMediaStudentIndex = studentsMedias.indexOf(highMedia)
+const highMediaStudentName = students[highMediaStudentIndex].name   
+
+console.log( 'La nota media más alta es: ', highMedia, 'y pertenece al alumno/a: ', highMediaStudentName)
 
 // 18- Añadir un punto extra a cada nota existente de todos los alumnos. Recordad que la nota máxima posible es 10. Si los alumnos aún no tienen registrada ninguna nota, les pondremos un 10.
 
+// students.forEach(student => student.examScores.forEach(examScore => examScore + 1 )); 
+         /*  IN PROCESS  */
+const extraPointList = studentsScores.map(score => score.map(calif => calif + 1) ) // NOT WORKING 
+
+const newList = students.forEach(student => [student.examScores].map(score => score.map(calif => calif + 1))) // NOT WORKING 
+
+
+
+// console.log('students scores', studentsScores)
+// console.table(extraPointList)
+// console.table(newList)
