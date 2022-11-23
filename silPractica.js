@@ -1,5 +1,5 @@
 
-const students = [{
+export const students = [{
     age: 20,
     examScores: [],
     gender: 'male',
@@ -79,9 +79,9 @@ const students = [{
     },
     ]
 
-const availableMaleNames = ['pepe', 'juan', 'victor', 'Leo', 'francisco', 'carlos', 'edu'];
-const availableFemaleNames = ['cecilia', 'ana', 'luisa', 'silvia', 'isabel', 'virginia'];
-const availableGenders = ['male', 'female'];
+export const availableMaleNames = ['pepe', 'juan', 'victor', 'Leo', 'francisco', 'carlos', 'edu'];
+export const availableFemaleNames = ['cecilia', 'ana', 'luisa', 'silvia', 'isabel', 'virginia'];
+export const availableGenders = ['male', 'female'];
 
 
 
@@ -232,8 +232,8 @@ console.log('El alumno/a con mejores notas es: ', bestStudent)
 // 17- Mostrar por consola la nota media más alta de la clase y el nombre del alumno al que pertenece.
 
     // 1º Lista con la nota media individual de cada alumno
-let counter = 2 // valor 2 para probar
-const studentsMedias = Array.from(studentsScores, (scores => (scores.reduce((sum, n) => sum + n , 0))/counter))
+
+const studentsMedias = Array.from(studentsScores, (scores => (scores.reduce((sum, n) => sum + n , 0))/scores.length))
 console.log('Students Medias',studentsMedias) // 
 
     // 2º mostrar la nota media más alta y el nombre del alumno que la tiene
@@ -245,14 +245,22 @@ console.log( 'La nota media más alta es: ', highMedia, 'y pertenece al alumno/a
 
 // 18- Añadir un punto extra a cada nota existente de todos los alumnos. Recordad que la nota máxima posible es 10. Si los alumnos aún no tienen registrada ninguna nota, les pondremos un 10.
 
-// students.forEach(student => student.examScores.forEach(examScore => examScore + 1 )); 
-         /*  IN PROCESS  */
-const extraPointList = studentsScores.map(score => score.map(calif => calif + 1) ) // NOT WORKING 
+const sumExtraPoints = () => {
+    // para cada estudiante de students
+    for (let i = 0; i < students.length; i++) {
+        const student = students[i] 
+        for ( let index2 = 0; index2 < student.length; index2++){
+            student[index2].examScores = student[index2].examScores.map(score => (score < 10) ? score++ : score);
+        }
+        
+    }
+    
+}
 
-const newList = students.forEach(student => [student.examScores].map(score => score.map(calif => calif + 1))) // NOT WORKING 
 
 
+console.log('students scores: ', studentsScores)
 
-// console.log('students scores', studentsScores)
-// console.table(extraPointList)
-// console.table(newList)
+sumExtraPoints()
+console.table(students)
+// const newList = students.forEach(student => [student.examScores].map(score => score.map(calif => calif + 1))) // NOT WORKING 
