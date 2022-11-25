@@ -1,10 +1,11 @@
 
 # CHALLENGE - PRÁCTICA JAVASCRIPT
 
-Esta es mi resolución del Challenge propuesto como práctica en el módulo de Fundamentos Javascript del Bootcamp Keepcoding-Glovo, en la especialidad de Web Development.
+Esta es mi resolución del Challenge propuesto como práctica en el módulo de Fundamentos Javascript del Bootcamp Keepcoding-Glovo, en la especialidad de Web Development. // this is my proposed challenge resolution as a practice in the Javascript Fundamentals module.(Bootcamp Keepcoding - Glovo - Web Development)
 
-A continuación se especifican las bases:
+Para inicializar la app index.js // to inicialize the app, run index.js
 
+Bases:
 
 # Classroom management
 Necesitamos desarrollar una aplicación hecha con javascript que nos ayude a gestionar los alumnos de nuestra clase.
@@ -32,7 +33,11 @@ const availableFemaleNames = ['cecilia', 'ana', 'luisa', 'silvia', 'isabel', 'vi
 const availableGenders = ['male', 'female'];
 ```
 
-Como podéis ver, cada requisito tiene un número asignado. Cuando ejecutemos la aplicación, aparecerá el listado completo de requisitos. El usuario debe pulsar el número correspondiente a ese requisito para que se ejecute. Una vez la ejecución termine, volveremos a mostrar el listado de requisitos para que el usuario pueda seleccionar otro. En caso de que el usuario pulse el 0 o un número no contemplado, la aplicación terminará.
+- Cada requisito tiene un número asignado. 
+- Cuando ejecutemos la aplicación, aparecerá el listado completo de requisitos. 
+- El usuario debe pulsar el número correspondiente a ese requisito para que se ejecute. 
+- Una vez la ejecución termine, volveremos a mostrar el listado de requisitos para que el usuario pueda seleccionar otro. 
+- En caso de que el usuario pulse el 0 o un número no contemplado, la aplicación terminará.
 
 
 ## Requisitos indispensables
@@ -63,7 +68,6 @@ Como podéis ver, cada requisito tiene un número asignado. Cuando ejecutemos la
 ### 15- Ordenar el array de alumnos alfabéticamente según su nombre.
 
 ## Requisitos opcionales
-Os recomiendo encarecidamente que los intentéis, no son difíciles!
 
 ### 16- Mostrar por consola el alumno de la clase con las mejores notas.
 El alumno con mejores notas es aquel cuyo sumatorio de todas sus notas es el valor más alto de todos.
