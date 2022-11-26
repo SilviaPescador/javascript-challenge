@@ -210,7 +210,7 @@ export async function displayOptions() {
           studentsScores = students.map(student => student.examScores);
           // NOTA!!! Si hay un alumno sin notas, lo toma como media === 0, y si ningun alumno tiene notas aún, muestra que la media es 0, y que ningún alumno tiene notas.
           const studentsMedias = Array.from(studentsScores, (scores => scores.length > 0 ? ( (scores.reduce((sum, n) => sum + n , 0))/scores.length) : 0) );
-          const highMedia = Math.max(...studentsMedias);
+          const highMedia = students.length === 0 ? 0 : Math.max(...studentsMedias);
           const highMediaStudentIndex = studentsMedias.indexOf(highMedia);
           const highMediaStudentName = studentsMedias.every(media => media === 0) ? 'Ningun alumno tiene notas aún. Para añadir una nueva nota, elija la opción 14': students[highMediaStudentIndex].name;
 
