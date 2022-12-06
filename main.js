@@ -10,8 +10,7 @@ import {students,
         } from './utils.js';
 
 
-
-        
+      
 const rl = readline.createInterface({
     input: process.stdin, 
     output: process.stdout, 
@@ -44,7 +43,7 @@ export async function displayOptions() {
     let studentAges
 
     do {
-      // gestion de promise
+      
       try {
         showOptions()
         numberFromConsole = await getOptionFromConsole();
@@ -150,7 +149,7 @@ export async function displayOptions() {
       case 12: 
           // Edad media de todos los alumnos de la clase.
           const sumStudentsAges = students.length > 0 ? studentAges.reduce((sum, n) => sum + n, 0) : 0;
-          const avgStudetsAges = students.length > 0 ? Math.round(sumStudentsAges / students.length) : 0; // ternaria
+          const avgStudetsAges = students.length > 0 ? Math.round(sumStudentsAges / students.length) : 0;
 
           console.log('Edad media de todos los alumnos de la clase : ',avgStudetsAges);
           break;
@@ -168,7 +167,7 @@ export async function displayOptions() {
 
       case 14:
           // Añade nueva nota aleatoria al listado de cada alumno(entre 0 y 10).
-          students.forEach(student => student.examScores.push(calculateRandomNumber(0, 10))); // correcto
+          students.forEach(student => student.examScores.push(calculateRandomNumber(0, 10))); 
           
           console.log('Notas de cada alumno actualizadas con punto extra: ')
           console.table(students)
@@ -185,7 +184,7 @@ export async function displayOptions() {
             if (nameA > nameB) {
                 return 1;
             }
-            // si los nombres son iguales:
+
             return 0;
           });
 
